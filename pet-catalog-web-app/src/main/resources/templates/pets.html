@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Pet-Catalog</title>
+</head>
+<body class="container">
+<h1>Add a Pet</h1>
+
+<form class="row" action="/pet" method="post">
+    <fieldset>
+    <div class="form-group">
+        <label for="petNameLabel">Pet Name</label>
+        <input type="text" class="form-control" name="petName" id="petNameLabel">
+    </div>
+    <div class="form-group">
+        <label for="petImageLabel">Pet Image Location</label>
+        <input type="text" class="form-control" name="petImage" id="petImageLabel">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    </fieldset>
+</form>
+
+<h1>Available Pets</h1>
+<fieldset>
+    <div class="mb-3" th:each="petItem : ${pets}">
+        <div class="col-sm-6">
+            <div class="card">
+                <img th:src="${petItem.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${petItem.name}"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+</body>
+</html>

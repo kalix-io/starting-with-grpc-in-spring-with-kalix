@@ -1,0 +1,33 @@
+// This is the public API offered by your entity.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "kalix/annotations.proto";
+import "google/api/annotations.proto";
+
+package com.example;
+
+option java_outer_classname = "PetRepositoryApi";
+
+message PetItem {
+  string pet_id = 1 [(kalix.field).entity_key = true];
+  string name = 2;
+  string image = 3;
+}
+
+message PetItemId {
+  string pet_id = 1 [(kalix.field).entity_key = true];
+}
+
+
+service PetCatalogRepository {
+  option (kalix.codegen) = {
+    value_entity: {
+      name: "com.example.domain.PetCatalogEntity"
+      entity_type: "pet"
+      state: "com.example.domain.Pet"
+    }
+  };
+  rpc Add(PetItem) returns (google.protobuf.Empty);
+  rpc GetDetails(PetItemId) returns (PetItem);
+}

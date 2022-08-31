@@ -1,0 +1,12 @@
+
+syntax = "proto3";
+
+package com.example.domain;
+
+option java_outer_classname = "PetItemDomain";
+
+message Pet {
+  string name = 1;
+  string image = 2;
+  int32 count =3;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package com.example.view;
+
+import "com/example/domain/domain.proto";
+import "kalix/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service AvailablePets {
+  option (kalix.codegen) = {
+    view: {}
+  };
+
+  rpc UpdatePetItemDetails(com.example.domain.Pet) returns (com.example.domain.Pet) {
+    option (kalix.method).eventing.in = {
+      value_entity: "pet"
+    };
+    option (kalix.method).view.update = {
+      table: "pet"
+    };
+  }
+
+  rpc GetAllPets(google.protobuf.Empty) returns (stream com.example.domain.Pet) {
+    option (kalix.method).view.query = {
+      query: "SELECT * FROM pet"
+    };
+  }
+}

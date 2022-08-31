@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.example.view;
+
+import "com/example/domain/domain.proto";
+import "google/protobuf/empty.proto";
+
+service AvailablePets {
+
+  rpc UpdatePetItemDetails(com.example.domain.Pet) returns (com.example.domain.Pet) ;
+
+  rpc GetAllPets(google.protobuf.Empty) returns (stream com.example.domain.Pet) ;
+}
