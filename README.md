@@ -1,2 +1,3 @@
 # starting-with-grpc-in-spring-with-kalix
-Starting with gRPC in Spring with Kalix
+
+This repo contains code for the following [Kalix Blog Post](https://www.kalix.io/blog/starting-with-grpc-in-spring-with-kalix)
